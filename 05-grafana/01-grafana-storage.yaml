@@ -1,0 +1,19 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: grafana-claim
+  namespace: monitoring
+  labels:
+    task: monitoring
+    k8s-app: grafana
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 20Gi
+  selector: 
+    matchLabels: 
+      volume: grafana
